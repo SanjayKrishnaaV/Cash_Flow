@@ -6,6 +6,7 @@ struct details
 	int hisid[100], wds[100], amount[100], balance[100]; int size;
 };
 struct details d;
+//For Saving Details
 void historysaver(int id, int wdss, int amt, int bal)
 {
 	d.hisid[d.size]=id;
