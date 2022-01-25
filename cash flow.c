@@ -15,19 +15,21 @@ void historysaver(int id, int wdss, int amt, int bal)
 	d.balance[d.size]=bal;
 	d.size+=1;
 }
+//Users
 int initializer()
 {
 	int users,i;
 	printf("Enter the No. of Users: "); scanf("%d", &users);
 	for(i=0;i<users;i++)
 	{
-		d.id[i]=0+i;
+		d.id[i]=1231+i;
 		d.cash[i]=1000;
 	}
 	d.size=0;
 	system("cls");
 	return users;
 }
+//Cash Receipt
 void printer()
 {
 	int size=d.size,i;
@@ -40,6 +42,7 @@ void printer()
 	system("pause");
 	system("cls");
 }
+//show users
 void showusers(int size)
 {
 	int i;
@@ -57,12 +60,12 @@ void showusers(int size)
 int main()
 {
 	
-	int idinput=0, size, i, option1;
+	int idinput=0, size, i, option1, check=1;
 	size=initializer();
-	while(1)
+	while(check==1)
 	{
 		system("cls");
-		printf("1. Show Cash Flow Receipt\n2. ATM\n3. Show All Acc.\nEnter the Option: "); scanf("%d", &option1);
+		printf("1. Show Cash Flow Receipt\n2. ATM\n3. Show All Acc.\n4. Exit \nEnter the Option: "); scanf("%d", &option1);
 		system("cls");
 		switch(option1)
 		{
@@ -110,6 +113,9 @@ int main()
 				break;
 			case 3: //show all accounts
 				showusers(size);
+				break;
+			case 4:
+				check=0;
 				break;
 			default:
 				printf("Enter the Proper Option !!\n");
