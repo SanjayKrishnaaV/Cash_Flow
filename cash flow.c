@@ -1,13 +1,12 @@
 #include<stdio.h>
 struct details
 {
-	int id[100], cash[100];	
+	int id[100], cash[100];	//For Storing User account details
 	//4 array--->   1st->id  2nd->withdraw or deposit  3rd->amount  4-> balance
-	int hisid[100], wds[100], amount[100], balance[100]; int size;
-};
-struct details d;
-//For Saving Details
-void historysaver(int id, int wdss, int amt, int bal)
+	int hisid[100], wds[100], amount[100], balance[100]; int size;//For Storing user Transaction Details
+}d;
+
+void historysaver(int id, int wdss, int amt, int bal) //For Saving Details
 {
 	d.hisid[d.size]=id;
 	d.wds[d.size]=wdss;
@@ -15,8 +14,8 @@ void historysaver(int id, int wdss, int amt, int bal)
 	d.balance[d.size]=bal;
 	d.size+=1;
 }
-//Users
-int initializer()
+
+int initializer() //For initializing user account details
 {
 	int users,i;
 	printf("Enter the No. of Users: "); scanf("%d", &users);
@@ -27,10 +26,10 @@ int initializer()
 	}
 	d.size=0;
 	system("cls");
-	return users;
+	return users; //To return the number of users
 }
-//Cash Receipt
-void printer()
+
+void printer() //To show cash flow receipt aslo calles as transaction details
 {
 	int size=d.size,i;
 	printf("------------------- Cash Flow Receipt -------------------\n\n");
@@ -42,8 +41,8 @@ void printer()
 	system("pause");
 	system("cls");
 }
-//show users
-void showusers(int size)
+
+void showusers(int size) //To show all account details
 {
 	int i;
 	printf("Showing Account Details\n");
@@ -57,11 +56,12 @@ void showusers(int size)
 	system("pause");
 	system("cls");
 }
-int main()
+
+int main() //Program starts here
 {
 	
 	int idinput=0, size, i, option1, check=1;
-	size=initializer();
+	size=initializer(); //For calling the function initializer() 
 	while(check==1)
 	{
 		system("cls");
