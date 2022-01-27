@@ -3,10 +3,10 @@ struct details
 {
 	int id[100], cash[100];	//For Storing User account details
 	//4 array--->   1st->id  2nd->withdraw or deposit  3rd->amount  4-> balance
-	int hisid[100], wds[100], amount[100], balance[100]; int size;//For Storing user Transaction Details
+	int hisid[100], wds[100], amount[100], balance[100]; int size;//For Storing user Transaction Details (history)
 }d;
 
-void historysaver(int id, int wdss, int amt, int bal) //For Saving Details
+void historysaver(int id, int wdss, int amt, int bal) //For Saving Details in transaction details
 {
 	d.hisid[d.size]=id;
 	d.wds[d.size]=wdss;
@@ -18,7 +18,7 @@ void historysaver(int id, int wdss, int amt, int bal) //For Saving Details
 int initializer() //For initializing user account details
 {
 	int users,i;
-	printf("Enter the No. of Users: "); scanf("%d", &users);
+	printf("Enter the No. of Users: "); scanf("%d", &users); // Getting no. of users
 	for(i=0;i<users;i++)
 	{
 		d.id[i]=1231+i;
@@ -36,7 +36,7 @@ void printer() //To show cash flow receipt aslo calles as transaction details
 	printf("S.No.\tID\tStatus  \tAmount\tBalance\t\n\n");
 	for(i=0;i<size;i++)
 	{
-		printf("%d.\t%d\t%s\t%d\t%d\n", (i+1), d.hisid[i],((d.wds[i]==0)?"Deposit ":"Withdraw"),d.amount[i],d.balance[i]);
+		printf("%d.\t%d\t%s\t%d\t%d\n", (i+1), d.hisid[i],((d.wds[i]==0)?"Deposit ":"Withdraw"),d.amount[i],d.balance[i]); //Prints data
 	}
 	system("pause");
 	system("cls");
@@ -65,7 +65,7 @@ int main() //Program starts here
 	while(check==1)
 	{
 		system("cls");
-		printf("1. Show Cash Flow Receipt\n2. ATM\n3. Show All Acc.\n4. Exit \nEnter the Option: "); scanf("%d", &option1);
+		printf("1. Show Cash Flow Receipt\n2. ATM\n3. Show All Acc.\n4. Exit \nEnter the Option: "); scanf("%d", &option1); //asking user to select option
 		system("cls");
 		switch(option1)
 		{
@@ -77,13 +77,13 @@ int main() //Program starts here
 		int flag=0;
 		for(i=0;i<size;i++)
 		{
-			if(d.id[i]==idinput){
+			if(d.id[i]==idinput){    // Searching whether the id is exist or not
 				customerid=i;
 				flag=1;
 			}
 		}
 			if (flag==0){
-				printf("Enter the Valid ID\n");
+				printf("Enter the Valid ID\n");  // If is not there
 				continue;
 			}
 			else
@@ -92,17 +92,17 @@ int main() //Program starts here
 				int option, amount; 
 				system("cls");
 				printf("ID: %d\n", d.id[customerid]);
-				printf("1. Deposit Amount\n2. Withdraw Amount\nEnter the Option to Continue...: "); scanf("%d", &option);
+				printf("1. Deposit Amount\n2. Withdraw Amount\nEnter the Option to Continue...: "); scanf("%d", &option); //asking for withdraw or deposit
 				switch(option) 
 				{
 					case 1:
 						printf("Enter the Amount to Deposit: "); scanf("%d", &amount);
-						d.cash[customerid]+=amount;
+						d.cash[customerid]+=amount;                                      //Adds amount
 						historysaver(d.id[customerid],0,amount,d.cash[customerid]);
 						break;
 					case 2:
 						printf("Enter the Amount to Withdraw: "); scanf("%d", &amount);
-						d.cash[customerid]-=amount;
+						d.cash[customerid]-=amount;                                      //Decreases amount
 						historysaver(d.id[customerid],1,amount,d.cash[customerid]);
 						break;
 					default:
@@ -115,7 +115,7 @@ int main() //Program starts here
 				showusers(size);
 				break;
 			case 4:
-				check=0;
+				check=0;                        //To exit out of the loop or application
 				break;
 			default:
 				printf("Enter the Proper Option !!\n");
